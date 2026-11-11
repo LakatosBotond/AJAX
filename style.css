@@ -327,3 +327,12 @@ body {
     color: #1e6fe8;
     font-size: 17px;
 }
+.jellemzo-ikon {
+    display: flex;
+    width: 26px;
+}
+
+.jellemzo-ikon svg {
+    width: 24px;
+    height: 24px;
+}

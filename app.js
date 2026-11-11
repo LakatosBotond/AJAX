@@ -1,48 +1,42 @@
-function betoltes(){
-    const http = new XMLHttpRequest();
-    http.onload = function(){
-        if(this.status == 200){
-            const termek = JSON.parse(this.responseText)
-            megjelenites(termek)
-        }
-        else{
-            hibaKiiras()
-        }
+const http = new XMLHttpRequest()
+http.onload = function () {
+    if (http.status == 200) {
+        const termek = JSON.parse(http.responseText)
+        megjelenites(termek)
     }
-    http.onerror = function(){
+    else {
         hibaKiiras()
     }
-    http.open("GET", "termek.json")
-    http.send()
 }
+http.onerror = function () {
+    hibaKiiras()
+}
+http.open("GET", "termek.json")
+http.send()
 
-function megjelenites(termek){
-    document.getElementById("termekNev").innerHTML = termek.name
-    document.getElementById("termekLeiras").innerHTML = termek.description
-    document.getElementById("termekErtekeles").innerHTML = termek.rating
-    document.getElementById("termekAr").innerHTML = termek.price.toLocaleString("hu-HU")
-    document.getElementById("termekPenznem").innerHTML = termek.currency
-    document.getElementById("termekKeszlet").innerHTML = termek.stock
-    document.getElementById("gyartoNev").innerHTML = termek.manufacturer.name
-    document.getElementById("gyartoOrszag").innerHTML = termek.manufacturer.country
+function megjelenites(termek) {
+    document.getElementById("termekNev").textContent = termek.name
+    document.getElementById("termekLeiras").textContent = termek.description
+    document.getElementById("termekErtekeles").textContent = termek.rating
+    document.getElementById("termekAr").textContent = termek.price.toLocaleString("hu-HU")
+    document.getElementById("termekPenznem").textContent = termek.currency
+    document.getElementById("termekKeszlet").textContent = termek.stock
+    document.getElementById("gyartoNev").textContent = termek.manufacturer.name
+    document.getElementById("gyartoOrszag").textContent = termek.manufacturer.country
 
     document.getElementById("foKep").src = termek.image
-    const belyegkepek = document.getElementsByClassName("belyegkep")
-    for(let index = 0; index < belyegkepek.length; index++){
-        belyegkepek[index].src = termek.image
+    for (const belyegkep of document.getElementsByClassName("belyegkep")) {
+        belyegkep.src = termek.image
     }
 
     const jellemzokLista = document.getElementById("jellemzokLista")
-    const jellemzoIkonok = ["🔲", "💾", "💽", "🎮"]
-    for(let index = 0; index < termek.features.length; index++){
-        jellemzokLista.innerHTML += `
-            <li><span class="jellemzo-ikon">${jellemzoIkonok[index]}</span>${termek.features[index]}</li>
-        `
+    for (const jellemzo of termek.features) {
+        jellemzokLista.innerHTML += `<li><span class="jellemzo-ikon">🔲</span>${jellemzo}</li>`
     }
 
     const velemenyekLista = document.getElementById("velemenyekLista")
     const velemenyDatumok = ["2024. 11. 03.", "2024. 10. 21."]
-    for(let index = 0; index < termek.reviews.length; index++){
+    for (let index = 0; index < termek.reviews.length; index++) {
         const velemeny = termek.reviews[index]
         velemenyekLista.innerHTML += `
             <div class="velemeny">
@@ -57,10 +51,8 @@ function megjelenites(termek){
     }
 }
 
-function hibaKiiras(){
+function hibaKiiras() {
     const hibaDoboz = document.getElementById("hibaUzenet")
-    hibaDoboz.innerHTML = "A termék adatai nem érhetők el!"
+    hibaDoboz.textContent = "A termék adatai nem érhetők el!"
     hibaDoboz.style.display = "block"
 }
-
-betoltes()

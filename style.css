@@ -15,6 +15,19 @@ body {
     padding: 12px;
 }
 
+/* ---------- HIBAÜZENET ---------- */
+.hiba-uzenet {
+    display: none;
+    background-color: #fdecea;
+    color: #b3261e;
+    border: 1px solid #f5c2be;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
 /* ---------- FELSŐ RÉSZ ---------- */
 .felso-resz {
     display: grid;
@@ -74,13 +87,13 @@ body {
 
 .termek-neve {
     font-size: 36px;
-    margin: 10px 0 6px 0;
+    margin: 10px 0 6px;
 }
 
 .rovid-leiras {
     color: #5b6473;
     font-size: 18px;
-    margin: 0 0 12px 0;
+    margin: 0 0 12px;
 }
 
 .ertekeles-sor {
@@ -90,16 +103,20 @@ body {
     font-size: 16px;
 }
 
-.csillagok {
+.csillagok,
+.velemeny-csillagok {
     color: #f5a623;
-    font-size: 24px;
     letter-spacing: 2px;
+}
+
+.csillagok {
+    font-size: 24px;
 }
 
 .ar {
     font-size: 34px;
     font-weight: bold;
-    margin: 18px 0 14px 0;
+    margin: 18px 0 14px;
 }
 
 .raktar-jelzes {
@@ -128,13 +145,13 @@ body {
     cursor: pointer;
 }
 
-.gomb.kosar {
+.kosar {
     background-color: #1e6fe8;
     color: #ffffff;
     border-color: #1e6fe8;
 }
 
-.gomb.kedvenc {
+.kedvenc {
     background-color: #ffffff;
     color: #1a1f2b;
 }
@@ -196,7 +213,6 @@ body {
 .also-resz {
     display: grid;
     grid-template-columns: 1.3fr 0.9fr 1fr;
-    gap: 0;
     background-color: #fbfcfd;
 }
 
@@ -210,13 +226,13 @@ body {
 
 .also-oszlop h2 {
     font-size: 20px;
-    margin: 0 0 14px 0;
+    margin: 0 0 14px;
 }
 
 .leiras-szoveg {
     font-size: 17px;
     line-height: 1.6;
-    margin: 0 0 22px 0;
+    margin: 0 0 22px;
 }
 
 .elonyok {
@@ -302,13 +318,8 @@ body {
     font-size: 14px;
 }
 
-.velemeny-csillagok {
-    color: #f5a623;
-    letter-spacing: 2px;
-}
-
 .velemeny-szoveg {
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
     line-height: 1.4;
 }
 
